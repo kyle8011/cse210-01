@@ -11,6 +11,9 @@ namespace tic_tac_toe
             Console.WriteLine($"{spaces[4]}|{spaces[5]}|{spaces[6]}");
             Console.WriteLine($"{spaces[1]}|{spaces[2]}|{spaces[3]}");
         }
+        static void logic(List<string> spaces) {
+
+        }
         static void Main(string[] args)
         {
             //Create and fill lists to be used in the game
@@ -32,13 +35,25 @@ namespace tic_tac_toe
             while (filled[10] == false & space != 0)
             {
                 Console.WriteLine($" \nIt is now {turn}'s turn");
+                //Draw the board
                 draw_board(spaces);
                 Console.Write($"Select a space to draw an {turn}: ");
+                //Receive input
                 space = int.Parse(Console.ReadLine());
+                //If the space is not filled
                 if (filled[space] == false) {
+                    //Put an X or O
                     spaces[space] = turn;
-                    if (turn == "X") {Console.BackgroundColor = ConsoleColor.Blue; turn = "O";}
-                    else {Console.BackgroundColor = ConsoleColor.Red; turn = "X";}
+                    //Check if the game is over
+                    logic(spaces);
+                    if (turn == "X") {
+                        Console.BackgroundColor = ConsoleColor.Blue; 
+                        turn = "O";
+                        }
+                    else {
+                        Console.BackgroundColor = ConsoleColor.Red; 
+                        turn = "X";
+                        }
                     filled[space] = true;
                 }
                 else {Console.BackgroundColor = ConsoleColor.Black; Console.WriteLine("\nThat is not an open space");} 
