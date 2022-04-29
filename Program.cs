@@ -11,18 +11,18 @@ namespace tic_tac_toe
             Console.WriteLine($"     {spaces[4]}|{spaces[5]}|{spaces[6]}");
             Console.WriteLine($"     {spaces[1]}|{spaces[2]}|{spaces[3]}");
         }
-        static void logic(List<string> spaces, List<bool> filled) {
+        static void logic(List<string> spaces, List<bool> filled, string turn) {
             int x;
             int y;
             int count;
             for (y = 11; y < 13; y++) {
                 for (x = 1; x < 8; x = x+3){ // Horizontal
-                    if (spaces[x] == spaces[y] & spaces[x+1] == spaces[y] & spaces[x+2] == spaces[y]) {Console.BackgroundColor = ConsoleColor.Yellow; Console.WriteLine("     Winner!"); filled[0] = true;}}
+                    if (spaces[x] == spaces[y] & spaces[x+1] == spaces[y] & spaces[x+2] == spaces[y]) {Console.BackgroundColor = ConsoleColor.Yellow; Console.WriteLine($"    {turn}'s Win!"); filled[0] = true;}}
                 for (x = 1; x < 4; x++){ //Vertical
-                    if (spaces[x] == spaces[y] & spaces[x+3] == spaces[y] & spaces[x+6] == spaces[y]) {Console.BackgroundColor = ConsoleColor.Yellow; Console.WriteLine("     Winner!"); filled[0] = true;}}
+                    if (spaces[x] == spaces[y] & spaces[x+3] == spaces[y] & spaces[x+6] == spaces[y]) {Console.BackgroundColor = ConsoleColor.Yellow; Console.WriteLine($"    {turn}'s Win!"); filled[0] = true;}}
                 //Diagonal
-                if (spaces[1] == spaces[y] & spaces[5] == spaces[y] & spaces[9] == spaces[y]) {Console.BackgroundColor = ConsoleColor.Yellow; Console.WriteLine("     Winner!"); filled[0] = true;}
-                else if (spaces[3] == spaces[y] & spaces[5] == spaces[y] & spaces[7] == spaces[y]) {Console.BackgroundColor = ConsoleColor.Yellow; Console.WriteLine("     Winner!"); filled[0] = true;}
+                if (spaces[1] == spaces[y] & spaces[5] == spaces[y] & spaces[9] == spaces[y]) {Console.BackgroundColor = ConsoleColor.Yellow; Console.WriteLine($"    {turn}'s Win!"); filled[0] = true;}
+                else if (spaces[3] == spaces[y] & spaces[5] == spaces[y] & spaces[7] == spaces[y]) {Console.BackgroundColor = ConsoleColor.Yellow; Console.WriteLine($"    {turn}'s Win!"); filled[0] = true;}
             }
             //Cat's game
             count = 0;
@@ -32,7 +32,7 @@ namespace tic_tac_toe
                 }
                 if (count == 8) {   
                     Console.BackgroundColor = ConsoleColor.Green;
-                    Console.WriteLine("     Cat's Game");
+                    Console.WriteLine("   Cat's Game");
                     filled[0] = true;
                 }
             }
@@ -47,6 +47,10 @@ namespace tic_tac_toe
             string turn = "X";
             int space = 1;
             string answer = "yes";
+            Console.BackgroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Welcome to tic-tac-toe!");
+            Console.WriteLine("Enter a number to draw there,");
+            Console.WriteLine("enter a zero to end the game.");
             List<string> spaces = new List<string>();
             List<bool> filled = new List<bool>();
             for (x = 0; x < 11; x++) {
@@ -82,7 +86,7 @@ namespace tic_tac_toe
                         spaces[space] = turn;
 
                         //Check if the game is over
-                        logic(spaces, filled);
+                        logic(spaces, filled, turn);
 
                         //Change turns
                         if (turn == "X" & filled[0] == false) {
