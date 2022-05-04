@@ -20,7 +20,7 @@ namespace tic_tac_toe
                     if (spaces[x] == spaces[y] & spaces[x+1] == spaces[y] & spaces[x+2] == spaces[y]) {Console.BackgroundColor = ConsoleColor.Yellow; Console.WriteLine($"    {turn}'s Win!"); filled[0] = true;}}
                 for (x = 1; x < 4; x++){ //Vertical
                     if (spaces[x] == spaces[y] & spaces[x+3] == spaces[y] & spaces[x+6] == spaces[y]) {Console.BackgroundColor = ConsoleColor.Yellow; Console.WriteLine($"    {turn}'s Win!"); filled[0] = true;}}
-                //Diagonal
+                //Diagonal 
                 if (spaces[1] == spaces[y] & spaces[5] == spaces[y] & spaces[9] == spaces[y]) {Console.BackgroundColor = ConsoleColor.Yellow; Console.WriteLine($"    {turn}'s Win!"); filled[0] = true;}
                 else if (spaces[3] == spaces[y] & spaces[5] == spaces[y] & spaces[7] == spaces[y]) {Console.BackgroundColor = ConsoleColor.Yellow; Console.WriteLine($"    {turn}'s Win!"); filled[0] = true;}
             }
